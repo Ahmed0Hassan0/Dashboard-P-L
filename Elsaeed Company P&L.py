@@ -74,7 +74,7 @@ filtered_revenue_df = operation_revenue_df[
     (operation_revenue_df['Date'].dt.quarter <= (selected_quarter_index + 1))]
     
 filtered_revenue_df_previous_year =operation_revenue_df[
-    (operation_revenue_df['Date'].dt.year == years_sidebar - 1 &
+    (operation_revenue_df['Date'].dt.year == years_sidebar - 1) &
     (operation_revenue_df['Date'].dt.quarter <= (selected_quarter_index + 1))]     
 
 type_operation_cost = filtered_cost_df.groupby('Type')['Amount'].sum()
