@@ -115,7 +115,7 @@ fig = sp.make_subplots(rows=1, cols=3, subplot_titles=list_operation_type_en)
 for i, col in enumerate(list_operation_type):
     fig.add_trace(go.Bar(x=profit_operation_grouped_transpose.index, y=profit_operation_grouped_transpose[col], name=col), row=1, col=i + 1)   
     
-fig.update_layout(height=450, width=1000, title_text=f'Gross Profit generates from primary activities')
+fig.update_layout(height=450, width=1000, title_text=f'Gross Profit generates from primary activities' + years_sidebar )
 
 #fig.update_xaxes(title_text=list_operation_type_en[0], row=1, col=1)
 #fig.update_xaxes(title_text=list_operation_type_en[1], row=1, col=2)
