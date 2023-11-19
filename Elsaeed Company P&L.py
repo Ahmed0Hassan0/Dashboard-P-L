@@ -160,7 +160,7 @@ def profit():
         st.metric(label='', value=f'{gross_profit:,.0f}', delta=f'{margin_percentage}')
     with col4:
         st.info('Revenue Growth')
-        st.metric(label='', value=f'{revenue_growth:,.0f}')
+        st.metric(label='', value=f'{revenue_growth:,.0f}', delta=f'{margin_percentage}')
 profit() 
 
 
