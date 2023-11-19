@@ -74,7 +74,7 @@ filtered_revenue_df = operation_revenue_df[
     (operation_revenue_df['Date'].dt.quarter <= (selected_quarter_index + 1))]
     
 filtered_revenue_df_previous_year =operation_revenue_df[
-    (operation_revenue_df['Date'].dt.year == years_sidebar - 1) &
+    (operation_revenue_df['Date'].dt.year == int(years_sidebar) - 1) &
     (operation_revenue_df['Date'].dt.quarter <= (selected_quarter_index + 1))]     
 
 type_operation_cost = filtered_cost_df.groupby('Type')['Amount'].sum()
@@ -141,6 +141,7 @@ total_revenue = (filtered_revenue_df['Amount']).sum().astype(float)
 total_revenue_previous_year = (filtered_revenue_df_previous_year['Amount']).sum().astype(float)
 gross_profit = float(total_revenue) - float(total_expenses)
 revenue_growth = ((total_revenue - total_revenue_previous_year )/total_revenue_previous_year)*100
+revenue_growth_percentage =  "{:.00%}".format(revenue_growth)
 margin = float(gross_profit) / float(total_revenue)
 margin_percentage = "{:.00%}".format(margin)
 
@@ -160,7 +161,7 @@ def profit():
         st.metric(label='', value=f'{gross_profit:,.0f}', delta=f'{margin_percentage}')
     with col4:
         st.info('Revenue Growth')
-        st.metric(label='', value=f'{revenue_growth:,.0f}', delta=f'{margin_percentage}')
+        st.metric(label='', value=revenue_growth_percentage)
 profit() 
 
 
