@@ -165,7 +165,7 @@ def profit():
         st.metric(label='', value=revenue_growth_percentage)
 profit() 
 
-st.write(int(total_debit_interest))
+st.subheader('Debit interest : ' + f'{total_debit_interest:,.0f}')
 
 
 
