@@ -87,7 +87,7 @@ total_debit_interest = filtered_debit_leasing_interest['Amount'].sum().astype(fl
 type_operation_cost = filtered_cost_df.groupby('Type')['Amount'].sum()
 type_operation_revenue = filtered_revenue_df.groupby('Type')['Amount'].sum()
 profit_operation_grouped = pd.DataFrame(type_operation_revenue).merge(type_operation_cost, on='Type',
-    how='left',suffixes=('_revenue', '_cost'))
+    how='right',suffixes=('_revenue', '_cost'))
 profit_operation_grouped['Amount_gross'] = profit_operation_grouped['Amount_revenue'] - profit_operation_grouped['Amount_cost']
 profit_operation_grouped.rename(columns = {'Amount_gross': 'Gross Profit', 'Amount_revenue' : 'Revenue', 'Amount_cost':'Cost'}, inplace=True)
 profit_operation_grouped = profit_operation_grouped.sort_values(by= 'Gross Profit', ascending=False)
