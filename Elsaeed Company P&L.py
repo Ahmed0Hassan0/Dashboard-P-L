@@ -72,7 +72,7 @@ filtered_revenue_df = operation_revenue_df[
     (operation_revenue_df['Date'].dt.quarter <= (selected_quarter_index + 1))]
     
 filtered_revenue_df_previous_year =operation_revenue_df[
-    (operation_revenue_df['Date'].dt.year == int(years sidebar) - 1) &
+    (operation_revenue_df['Date'].dt.year == int(years_sidebar) - 1) &
     (operation_revenue_df['Date'].dt.quarter <= (selected_quarter_index + 1))]
 
 filtered_debit_interest = debit_interest[
