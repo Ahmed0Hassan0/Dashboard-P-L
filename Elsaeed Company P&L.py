@@ -25,7 +25,7 @@ real_estat_cost_df = cost_df[cost_df['Type'] == 'الاستثمار العقار
 contracting_cost_df = cost_df[cost_df['Type'] == 'المقاولات']
 general_expenses = cost_df[cost_df['Type'] == 'الإدارة']
 operation_cost_df = pd.concat([mixing_cost_df, real_estat_cost_df, contracting_cost_df])
-#
+
 operation_cost_without_interest_df = operation_cost_df[operation_cost_df['نوع المصرف '] != 'بنوك']
 general_expenses_without_interest_df =general_expenses[general_expenses['نوع المصرف '] != 'بنوك']
 debit_interest = cost_df[cost_df['نوع المصرف '] == 'بنوك']
@@ -119,7 +119,7 @@ list_operation_type_en = list(type_df['type_en'])
 #st.write(list_operation_type_en)
 #st.write(list_operation_type)
 
-#st.write(type_df)
+st.write(profit_operation_grouped[profit_operation_grouped['Type']])
 
 
 fig = sp.make_subplots(rows=1, cols=3, subplot_titles=list_operation_type_en)
