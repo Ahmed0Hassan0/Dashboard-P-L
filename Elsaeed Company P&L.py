@@ -76,7 +76,7 @@ filtered_revenue_df_previous_year =operation_revenue_df[
     (operation_revenue_df['Date'].dt.quarter <= (selected_quarter_index + 1))]
 
 filtered_debit_interest = debit_interest[
-    (debit_interest['Date'].dt.year == years_sidebar - 1) &
+    (debit_interest['Date'].dt.year == years_sidebar) &
     (debit_interest['Date'].dt.quarter <= (selected_quarter_index + 1))]
 total_debit_interest = filtered_debit_interest['Amount'].sum().astype(float)
 
