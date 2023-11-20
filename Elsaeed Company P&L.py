@@ -37,8 +37,6 @@ mixing_revenue_df = revenue_df[revenue_df['Type'] == 'محطات خلط الخر
 real_estat_revenue_df = revenue_df[revenue_df['Type'] == 'الاستثمار العقارى']
 contracting_revenue_df = revenue_df[revenue_df['Type'] == 'المقاولات']
 operation_revenue_df = pd.concat([mixing_revenue_df, real_estat_revenue_df, contracting_revenue_df])
-
-
 cash_in_df = pd.read_csv('pages/Datasets/Cash_in.csv')
 cash_out_df = pd.read_csv('pages/Datasets/Cash_out.csv')
 
