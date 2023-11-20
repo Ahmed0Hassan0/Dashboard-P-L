@@ -149,13 +149,13 @@ margin_percentage = "{:.00%}".format(margin)
 
 def profit():
 
-    expenses, revenue, total3, col4 = st.columns(4, gap='large') 
+    expenses, revenue, total3, col4 = st.columns(4, gap='large')
+    with revenue:
+        st.info('Total Revenue')
+        st.metric(label='', value=f'{total_revenue:,.0f}') 
     with expenses:
         st.info('Total Expenses')
         st.metric(label='', value=f'{total_expenses:,.0f}')
-    with revenue:
-        st.info('Total Revenue')
-        st.metric(label='', value=f'{total_revenue:,.0f}')
     with total3:
         st.info('Gross Profit')
         st.metric(label='', value=f'{gross_profit:,.0f}', delta=f'{margin_percentage}')
