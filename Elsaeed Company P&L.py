@@ -1,4 +1,3 @@
-
 #import library python
 import streamlit as st
 import pandas as pd
@@ -119,7 +118,7 @@ list_operation_type_en = list(type_df['type_en'])
 #st.write(list_operation_type_en)
 #st.write(list_operation_type)
 
-st.write(profit_operation_grouped[profit_operation_grouped['Type']])
+st.write(list(profit_operation_grouped[profit_operation_grouped['Type']]))
 
 
 fig = sp.make_subplots(rows=1, cols=3, subplot_titles=list_operation_type_en)
