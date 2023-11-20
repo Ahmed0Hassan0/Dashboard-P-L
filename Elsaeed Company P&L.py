@@ -24,6 +24,7 @@ real_estat_cost_df = cost_df[cost_df['Type'] == 'الاستثمار العقار
 contracting_cost_df = cost_df[cost_df['Type'] == 'المقاولات']
 operation_cost_df = pd.concat([mixing_cost_df, real_estat_cost_df, contracting_cost_df])
 operation_cost_without_interest_df = operation_cost_df[operation_cost_df['نوع المصرف '] != 'بنوك']
+debit_interest = cost_df[cost_df[['نوع المصرف '] != 'بنوك']
 
 general_expenses = cost_df[cost_df['Type'] == 'الإدارة']
 general_expenses_without_interest_df =general_expenses[general_expenses['نوع المصرف '] != 'بنوك']
@@ -75,7 +76,13 @@ filtered_revenue_df = operation_revenue_df[
     
 filtered_revenue_df_previous_year =operation_revenue_df[
     (operation_revenue_df['Date'].dt.year == years_sidebar - 1) &
-    (operation_revenue_df['Date'].dt.quarter <= (selected_quarter_index + 1))]     
+    (operation_revenue_df['Date'].dt.quarter <= (selected_quarter_index + 1))]
+
+filtered_debit_interest = debit_interest[
+    (debit_interest['Date'].dt.year == years_sidebar - 1) &
+    (debit_interest['Date'].dt.quarter <= (selected_quarter_index + 1))]
+total_debit_interest = filtered_debit_interest['Amount'].sum().astype(float)
+
 
 type_operation_cost = filtered_cost_df.groupby('Type')['Amount'].sum()
 type_operation_revenue = filtered_revenue_df.groupby('Type')['Amount'].sum()
@@ -132,8 +139,6 @@ profit_combined = pd.concat([filtered_cost_df, filtered_revenue_df], keys=['Expe
 profit_combined_grouped = profit_combined.groupby(['Type', profit_combined.index.get_level_values(0)])['Amount'].sum().groupby(level=1).cumsum().reset_index()
 #st.dataframe(profit_combined_grouped)
 
-debit_interest_df = filtered_cost_df[filtered_cost_df['نوع المصرف '] == 'بنوك']
-debit_interest = debit_interest_df['Amount'].sum().astype(float)
 
 admin_expenses = (filtered_admin_expenses_df['Amount']).sum().astype(float)
 total_expenses = (filtered_cost_df['Amount']).sum().astype(float)
@@ -163,7 +168,7 @@ def profit():
         st.metric(label='', value=revenue_growth_percentage)
 profit() 
 
-st.write(debit_interest)
+st.write(total_debit_interest)
 
 
 
