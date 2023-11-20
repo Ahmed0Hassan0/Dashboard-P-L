@@ -26,6 +26,7 @@ operation_cost_df = pd.concat([mixing_cost_df, real_estat_cost_df, contracting_c
 operation_cost_without_interest_df = operation_cost_df[operation_cost_df['نوع المصرف '] != 'بنوك']
 debit_interest = cost_df[cost_df[['نوع المصرف '] != 'بنوك']
 
+
 general_expenses = cost_df[cost_df['Type'] == 'الإدارة']
 general_expenses_without_interest_df =general_expenses[general_expenses['نوع المصرف '] != 'بنوك']
 
