@@ -107,7 +107,7 @@ st.markdown('#')
 #st.dataframe(type_operation_revenue)
 #st.dataframe(profit_operation)
 #st.dataframe(profit_operation_grouped)
-#st.write(profit_operation_grouped)
+st.write(profit_operation_grouped)
 #st.dataframe(profit_operation_grouped_transpose)
 
 list_operation_type = list(profit_operation_grouped.index)
@@ -117,8 +117,6 @@ type_df['type_en'] = type_df['type'].map(translation_dict)
 list_operation_type_en = list(type_df['type_en'])
 #st.write(list_operation_type_en)
 #st.write(list_operation_type)
-
-st.write(list(profit_operation_grouped[profit_operation_grouped['Type']]))
 
 
 fig = sp.make_subplots(rows=1, cols=3, subplot_titles=list_operation_type_en)
