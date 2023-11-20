@@ -148,8 +148,7 @@ margin_percentage = "{:.00%}".format(margin)
 
 
 def profit():
-
-    expenses, revenue, total3, col4 = st.columns(4, gap='large')
+    revenue, expenses, total3, col4 = st.columns(4, gap='large')
     with revenue:
         st.info('Total Revenue')
         st.metric(label='', value=f'{total_revenue:,.0f}') 
