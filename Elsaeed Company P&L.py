@@ -22,14 +22,16 @@ cost_df['Date'] = pd.to_datetime(cost_df['Date'])
 mixing_cost_df = cost_df[cost_df['Type'] == 'محطات خلط الخرسانه']
 real_estat_cost_df = cost_df[cost_df['Type'] == 'الاستثمار العقارى']
 contracting_cost_df = cost_df[cost_df['Type'] == 'المقاولات']
-operation_cost_df = pd.concat([mixing_cost_df, real_estat_cost_df, contracting_cost_df])
-operation_cost_without_interest_df = operation_cost_df[operation_cost_df['نوع المصرف '] != 'بنوك']
-debit_interest = cost_df[cost_df[['نوع المصرف '] != 'بنوك']
-
-
 general_expenses = cost_df[cost_df['Type'] == 'الإدارة']
-general_expenses_without_interest_df =general_expenses[general_expenses['نوع المصرف '] != 'بنوك']
+operation_cost_df = pd.concat([mixing_cost_df, real_estat_cost_df, contracting_cost_df])
 
+
+
+#
+
+operation_cost_without_interest_df = operation_cost_df[operation_cost_df['نوع المصرف '] != 'بنوك']
+general_expenses_without_interest_df =general_expenses[general_expenses['نوع المصرف '] != 'بنوك']
+debit_interest = cost_df[cost_df[['نوع المصرف '] != 'بنوك']
 
 revenue_2022_df = pd.read_csv('pages/Datasets/Revenue_2022.csv')
 revenue_2023_df = pd.read_csv('pages/Datasets/Revenue_2023.csv')
