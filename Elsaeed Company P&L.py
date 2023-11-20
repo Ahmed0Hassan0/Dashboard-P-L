@@ -29,6 +29,9 @@ operation_cost_df = pd.concat([mixing_cost_df, real_estat_cost_df, contracting_c
 operation_cost_without_interest_df = operation_cost_df[operation_cost_df['نوع المصرف '] != 'بنوك']
 general_expenses_without_interest_df =general_expenses[general_expenses['نوع المصرف '] != 'بنوك']
 debit_interest = cost_df[cost_df['نوع المصرف '] == 'بنوك']
+leasing_interest = cost_df[cost_df['نوع المصرف '] == 'الايجار التمويلي']
+debit_leasing_interest = pd.concat([debit_interest, leasing_interest])
+
 revenue_2022_df = pd.read_csv('pages/Datasets/Revenue_2022.csv')
 revenue_2023_df = pd.read_csv('pages/Datasets/Revenue_2023.csv')
 revenue_df = pd.concat([revenue_2022_df, revenue_2023_df])
@@ -75,9 +78,10 @@ filtered_revenue_df_previous_year =operation_revenue_df[
     (operation_revenue_df['Date'].dt.year == int(years_sidebar) - 1) &
     (operation_revenue_df['Date'].dt.quarter <= (selected_quarter_index + 1))]
 
-filtered_debit_interest = debit_interest[
-    (debit_interest['Date'].dt.year == years_sidebar) &
-    (debit_interest['Date'].dt.quarter <= (selected_quarter_index + 1))]
+filtered_debit_interest = debit_leasing_interest[
+    (debit_leasing_interest['Date'].dt.year == years_sidebar) &
+    (debit_leasing_interest['Date'].dt.quarter <= (selected_quarter_index + 1))]
+
 total_debit_interest = filtered_debit_interest['Amount'].sum().astype(float)
 
 
