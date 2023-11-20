@@ -163,7 +163,7 @@ def profit():
         st.metric(label='', value=revenue_growth_percentage)
 profit() 
 
-
+st.write(debit_interest)
 
 
 
