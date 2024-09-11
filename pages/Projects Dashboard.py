@@ -28,8 +28,8 @@ revenue_df = pd.concat([revenue_2022_df, revenue_2023_df])
 revenue_df['Amount'] =revenue_df['Amount'].astype(float)
 
 
-cash_in_df = pd.read_csv('pages/Datasets/cash_in.csv')
-cash_out_df = pd.read_csv('pages/Datasets/cash_out.csv')
+cash_in_df = pd.read_csv('pages/Datasets/Cash_in.csv')
+cash_out_df = pd.read_csv('pages/Datasets/Cash_out.csv')
 
 
 #site_list = df['المشروع'].unique()
